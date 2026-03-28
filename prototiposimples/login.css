@@ -1,0 +1,17 @@
+body {
+    display: flex;
+    justify-content: center; 
+    align-items: center;    
+    height: 100vh;           
+    margin: 0;
+    background-color: #f0f0f0;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    background-color: azure;
+    padding: 20px;
+    border-radius: 10px;
+    width: 300px;
+}
