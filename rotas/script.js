@@ -8,7 +8,7 @@ const routes = {
     "/" : () => "<h1>Página Publica</h1>",
 
     "/login": () => Login(),
-
+    
     "/dashboard": () => {
         if(!isAuthenticated()){
             location.hash = "/login"
@@ -54,6 +54,8 @@ function render(){
     if(route){
         app.innerHTML = route();
 
+        renderNav(path);
+
     const loginBtn = document.querySelector("button");
     if(loginBtn && path === "/login"){
         loginBtn.addEventListener("click",login);
@@ -73,6 +75,19 @@ function render(){
 //verifica login
 function isAuthenticated(){
     return localStorage.getItem("auth") === "true";
+}
+//gera o nav do dashboard
+function renderNav(){
+    //pega o id da area privada, para atualizar o nav e colocar o dashboard
+    const privateArea = document.getElementById("privateArea")
+    //limpa a privateArea
+    privateArea.innerHTML = " "
+    //verifica se esta logado
+    if(isAuthenticated()){
+        privateArea.innerHTML = `
+        <a href="#/dashboard">Dashboard</a>
+        `
+    }
 }
 
 //listeners de mudanças da pagina
